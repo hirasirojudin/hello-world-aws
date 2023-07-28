@@ -1,0 +1,12 @@
+{
+  "name": "userservice",
+  "version": "1.0.0",
+  "description": "a service of persib",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "dev@persib.com",
+  "license": "ISC"
+}
