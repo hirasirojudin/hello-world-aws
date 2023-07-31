@@ -34,15 +34,15 @@ jobs:
         npm ci
         npm run build --if-present
     
-    - name: rsync deployments
-      uses: burnett01/rsync-deployments@5.1
-      with:
-          switches: -avzr --delete
-          path: ./*
-          remote_path: /home/ec2-user/persibstg
-          remote_host: ec2-18-141-211-177.ap-southeast-1.compute.amazonaws.com
-          remote_user: ec2-user
-          remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
+    # - name: rsync deployments
+    #   uses: burnett01/rsync-deployments@5.1
+    #   with:
+    #       switches: -avzr --delete
+    #       path: ./*
+    #       remote_path: /home/ec2-user/persibstg
+    #       remote_host: ec2-18-141-211-177.ap-southeast-1.compute.amazonaws.com
+    #       remote_user: ec2-user
+    #       remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
 
     - name: Deploy in EC2
       env:
