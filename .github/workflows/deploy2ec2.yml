@@ -43,3 +43,20 @@ jobs:
           remote_host: ec2-18-141-211-177.ap-southeast-1.compute.amazonaws.com
           remote_user: ec2-user
           remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
+
+    - name: Deploy in EC2
+      env:
+        PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY  }}
+        HOSTNAME : ec2-18-141-211-177.ap-southeast-1.compute.amazonaws.com
+        USER_NAME : ec2-user
+      run: |
+        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+        
+          #Now we have got the access of EC2 and we will start the deploy .
+          pm2 delete all
+          cd /home/ec2-user
+          
+          git pull origin main &&
+          pm2 start app.js
+        '
