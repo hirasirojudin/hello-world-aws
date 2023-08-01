@@ -59,7 +59,7 @@ jobs:
           cd /home/ec2-user/persibstg
           
           mv package-lock.json ..
-          git pull origin main &&
-          pm2 start index.js --name persib
+          git pull origin main
           mv ../package-lock.json .
+          pm2 start index.js --name persib
         '
