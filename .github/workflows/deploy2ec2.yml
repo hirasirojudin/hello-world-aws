@@ -60,6 +60,6 @@ jobs:
           
           mv package-lock.json ..
           git pull origin main &&
-          pm2 start app.js
+          pm2 start index.js --name persib
           mv ../package-lock.json .
         '
